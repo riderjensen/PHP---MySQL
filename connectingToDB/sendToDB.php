@@ -6,7 +6,7 @@ $toes = $_GET['toes'];
 $radio = $_GET['exampleRadios'];
 
 // connect
-$dbconnection = mysqli_connect('localhost','riderjen_3760usr','****','riderjen_3760test') or die ('connection failed');
+$dbconnection = mysqli_connect('localhost','root','','test') or die ('connection failed');
 // query
 $query = "INSERT INTO email_requests (email, password, drinks, toes, gender) VALUES ('$email','$password','$drinks','$toes','$radio')";
 // send to database
