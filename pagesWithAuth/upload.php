@@ -1,14 +1,23 @@
 <?php
+// auth
+require_once('auth.php');
 
-$first = $_GET['firstName'];
-$last = $_GET['lastName'];
-$department = $_GET['department'];
+$name = $_GET['name'];
+$expertise = $_GET['expertise'];
 $phone = $_GET['phone'];
+$email = $_GET['email'];
+$bio = $_GET['bio'];
 $photo = $_GET['photo'];
 
-$ext = pathinfo( $_FILES['photo']['name'], PATHINFO_EXTENSION);
 
-$filename = $first. $last.time().'.'.$ext.'';
+// EXTENSION BROKEN
+$path = $_FILES['photo']['name'];
+$ext = pathinfo($path, PATHINFO_EXTENSION);
+
+echo $ext;
+
+$filename = $name.time() .'.'. $ext;
+echo $filename;
 $filepath =  'employees/';
 
 // make photo path and name
@@ -30,9 +39,10 @@ if ($_FILES['photo']['size'] > 204800) {
 if ($_FILES['photo']['type'] == 'image/gif' || $_FILES['photo']['type'] == 'image/jpeg' || $_FILES['photo']['type'] == 'image/pjpeg' || $_FILES['photo']['type'] == 'image/png') {
     // correct file
     // connect
-    $dbconnection = mysqli_connect('localhost','root','','test') or die ('connection failed');
+    require_once('variables.php');
+    $dbconnection = mysqli_connect(HOST,USER,PASSWORD,DB_NAME) or die ('connection failed');
     // query
-    $query = "INSERT INTO simple_employee (first, last, department, phone, photo) VALUES ('$first','$last','$department','$phone','$filename')";
+    $query = "INSERT INTO special (name, expertise, phone, email, bio, photo) VALUES ('$name','$expertise','$phone','$email','$bio','$filename')";
     // send to database
     $result = mysqli_query($dbconnection, $query) or die ('query failed');
     // end connection
@@ -50,7 +60,7 @@ if($validImage == true) {
     @unlink($_FILES['photo']['tmp_name']);
 } else {
     // try again
-    echo '<a href="submit.html" class="btn btn-primary"> Please try again</a>';
+    echo '<a href="submit.php" class="btn btn-primary"> Please try again</a>';
 };
 
 ?>
@@ -69,13 +79,16 @@ if($validImage == true) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
 </head>
+<?php
+include_once('navBar.php');
+?>
 
 <body>
 <h1>Posted to the database!</h1>
 <p>Thank you for submitting your information.<p>
 
 <?php
-echo $first $last;
+echo $name;
 echo '<img src="'.$filepath.$filename.'" alt="photo" />';
 
 ?>

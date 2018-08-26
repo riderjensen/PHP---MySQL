@@ -47,15 +47,15 @@ mysqli_close($dbconnection);
                     </div>
                     <div class="form-group">
                         <label for="textfieldInput">Last Name</label>
-                        <input type="text" name="lastName" class="form-control" value="<?php $found['last'] ?>" id="textfieldInput">
+                        <input type="text" name="lastName" class="form-control" value="<?php echo $found['last'] ?>" id="textfieldInput">
                     </div>
                     <div class="form-group">
                             <label for="textfieldInput">Department</label>
-                            <input type="text" name="department" class="form-control" value="<?php $found['department'] ?>" id="textfieldInput">
+                            <input type="text" name="department" class="form-control" value="<?php echo $found['department'] ?>" id="textfieldInput">
                         </div>
                         <div class="form-group">
                                 <label for="textfieldInput">Phone Number</label>
-                                <input type="text" name="phone" class="form-control" value="<?php $found['phone'] ?>" id="textfieldInput">
+                                <input type="text" name="phone" class="form-control" value="<?php echo $found['phone'] ?>" id="textfieldInput">
                             </div>
                             <input name="id" value="<?php $found['id'] ?>" type="hidden">
                     <button type="submit" class="btn btn-primary">Submit</button>

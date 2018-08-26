@@ -8,7 +8,7 @@ if (isset($_POST['submit'])){
     $empID = $_POST['id'];
     $empPhoto = $_POST['photo'];
     @unlink($_POST['photo']);
-    $query = "DELETE FROM employee_simple WHERE id = $empID";
+    $query = "DELETE FROM employee_simple WHERE id = '$empID'";
     $result = mysqli_query($dbconnection, $query) or die ('query failed');
 
     // redirect
