@@ -17,7 +17,7 @@ if (isset($_POST['submit'])){
     //
     //
     // Need to add in an actual URL to this page
-    header("Location: ");
+    header("Location: index.php");
 
     exit;
 }
