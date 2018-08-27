@@ -1,16 +1,16 @@
 <?php
 
-// need to create db called newsletter with 4 columns, number, first, last, email
-
 
 $email = $_GET['email'];
 $firstName = $_GET['firstName'];
 $lastName = $_GET['lastName'];
 
 // connect
-$dbconnection = mysqli_connect('localhost','root','','test') or die ('connection failed');
+
+//$dbconnection = mysqli_connect('localhost','root','','test') or die ('connection failed');
+$dbconnection = mysqli_connect('localhost','riderjen_3760usr','Ilikecheese3!','riderjen_3760test') or die ('connection failed');
 // query
-$query = "INSERT INTO newsletter (email, firstName, lastName) VALUES ('$email','$firstName','$lastName')";
+$query = "INSERT INTO newsletter (email, first, last) VALUES ('$email','$firstName','$lastName')";
 // send to database
 $result = mysqli_query($dbconnection, $query) or die ('query failed');
 // end connection
@@ -34,7 +34,7 @@ mysqli_close($dbconnection);
 
 <body>
 <h1>Posted to the database!</h1>
-<p>Thank you <?php $firstName $lastName?> for submitting your form.<p>
+<p>Thank you <?php echo $firstName;?> for submitting your form.<p>
 
 </body>
 </html>
