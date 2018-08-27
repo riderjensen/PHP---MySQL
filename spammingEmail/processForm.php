@@ -8,7 +8,7 @@ $lastName = $_GET['lastName'];
 // connect
 
 //$dbconnection = mysqli_connect('localhost','root','','test') or die ('connection failed');
-$dbconnection = mysqli_connect('localhost','riderjen_3760usr','Ilikecheese3!','riderjen_3760test') or die ('connection failed');
+$dbconnection = mysqli_connect('localhost','riderjen_3760usr','****','riderjen_3760test') or die ('connection failed');
 // query
 $query = "INSERT INTO newsletter (email, first, last) VALUES ('$email','$firstName','$lastName')";
 // send to database

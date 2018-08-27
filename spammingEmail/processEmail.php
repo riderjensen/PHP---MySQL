@@ -8,7 +8,7 @@ $subject = $_POST['subject'];
 $text = $_POST['textfield'];
 $email = 'riderjensen@gmail.com';
 
-$dbconnection = mysqli_connect('localhost','riderjen_3760usr','Ilikecheese3!','riderjen_3760test') or die ('connection failed');
+$dbconnection = mysqli_connect('localhost','riderjen_3760usr','****','riderjen_3760test') or die ('connection failed');
 // query and select all information from newsletter db
 $query = "SELECT * FROM newsletter";
 // send to database
