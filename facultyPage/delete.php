@@ -10,31 +10,25 @@
 crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">Menu</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fa fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-    
-            <ul class="navbar-nav ml-auto">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="index.php">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="index.php">Directory</a>
+                    </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="index.php">Directory</a>
-                            </li>
-                <li class="nav-item">
-                <a class="nav-link" href="submit.html">Submit Information</a>
-                </li>
-                <li class="nav-item">
-                        <a class="nav-link" href="#">Delete Employees</a>
-                        </li>
-                
-            </ul>
-            </div>
-        </div>
-        </nav>
+                      <a class="nav-link" href="submit.html">Submit New</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="delete.php">Delete</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
 
 
 <div class="container">
@@ -45,7 +39,7 @@ crossorigin="anonymous">
 <?php
 
 // connection
-$dbconnection = mysqli_connect('localhost','root','','test') or die ('connection failed');
+$dbconnection = mysqli_connect('localhost','riderjen_3760usr','Ilikecheese3!','riderjen_3760test') or die ('connection failed');
 // build query
 $query = "SELECT * FROM employee_simple ORDER BY last ASC";
 
