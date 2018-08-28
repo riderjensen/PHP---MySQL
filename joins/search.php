@@ -1,3 +1,13 @@
+<?php
+
+require_once('variables.php');
+$dbconnection = mysqli_connect(HOST,USER,PASSWORD,DB_NAME) or die ('connection failed');
+// query failing
+$query = "SELECT * FROM race";
+$result = mysqli_query($dbconnection, $query) or die ('query failed');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +31,16 @@ include_once('navBar.php');
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<h1>Search</h1>
+				<ul class="list-group">
+				<?php 
+				while($row = mysqli_fetch_array($result)) {
+					echo '<li class="list-group-item list-group-item-action"><a href="index.php?id='.$row['id'].'">'.$row['raceType'].'</a></li>';
+				}
+				mysqli_close($dbconnection);
+				?>
+					
+
+				</ul>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

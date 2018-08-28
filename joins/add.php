@@ -27,7 +27,7 @@ if (isset($_GET['submit'])){
 	
 	// loop through the array that contains all the raids selected
 	foreach($_GET['raid'] as $raidInst) {
-		$query = "INSERT INTO raids (user_id, raids) VALUES ('$recentID', '$raidInst')";
+		$query = "INSERT INTO raids (user, com) VALUES ('$recentID', '$raidInst')";
 		$result = mysqli_query($dbconnection, $query) or die ('query failed');
 
 	};
