@@ -1,18 +1,11 @@
-<<<<<<< Updated upstream
 
 <?php
-setcookie('username', '', time()-3600);
-setcookie('first', '', time()-3600);
-setcookie('last', '', time()-3600);
+unset($_COOKIE['username']);
+unset($_COOKIE['first']);
+unset($_COOKIE['last']);
+setcookie('username', '', -1);
+setcookie('first', '', -1);
+setcookie('last', '', -1);
 
-header('location: index.php');
-=======
-
-<?php
-setcookie('username', '', time()-3600);
-setcookie('first', '', time()-3600);
-setcookie('last', '', time()-3600);
-
-header('location: index.php');
->>>>>>> Stashed changes
+echo 'You have been logged out. <a class="btn btn-primary" href="index.php">Home</a>'
 ?>

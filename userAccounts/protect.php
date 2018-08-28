@@ -1,16 +1,7 @@
-<<<<<<< Updated upstream
 <?php
 if(!isset($_COOKIE['username'])) {
-	echo 'You must be logged in to access this page';
+	echo 'You must be signed in to view this page!';
 	exit();
 }
 
-=======
-<?php
-if(!isset($_COOKIE['username'])) {
-	echo 'You must be logged in to access this page';
-	exit();
-}
-
->>>>>>> Stashed changes
 ?>
