@@ -40,21 +40,41 @@ while($row = mysqli_fetch_array($result)) {
     echo '<p>';
     echo $row['description'];
     echo '</p>';
-    
-	if(isset($_COOKIE['first'])) {
-        echo '<a class="btn btn-primary" href="submitComment.php?id='.$row['id'].'">Submit a Comment</a>';
-        echo '<a class="btn btn-primary" href="viewComments.php?id='.$row['id'].'">View Comments</a>';
-	}
-	
+    echo '<a class="btn btn-primary" href="submitComment.php?id='.$row['id'].'">Submit a Comment</a>';
 }
 
-// close collection
-mysqli_close($dbconnection);
 
 ?>
             </div>
             <div class="col-md-2"></div>
         </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+
+             <?php
+                    $movieID = $_GET['id'];
+
+                    require_once('variables.php');
+                    $dbconnection = mysqli_connect(HOST,USER,PASSWORD,DB_NAME) or die ('connection failed');
+                    $query = "SELECT * from comments WHERE movieID=$movieID";
+                    // send to database
+                    $result = mysqli_query($dbconnection, $query) or die ('query failed');
+                    echo '<ul>';
+                    while($found = mysqli_fetch_array($result)) {
+
+                        echo'<li>User: '.$found['userName'].' - Rating: '. $found['rating'].' - Comment: '.$found['text'].'</li>';
+
+                    }
+                    echo '</ul>';
+                    // close collection
+                    mysqli_close($dbconnection);
+                ?>
+            </div>
+            <div class="col-md-2"></div>
+            </div>
+
+       
     </div>
 
 </body>

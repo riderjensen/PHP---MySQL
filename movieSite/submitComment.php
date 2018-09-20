@@ -12,13 +12,15 @@ if (isset($_GET['submit'])){
 
     $newID = $_GET['movieID'];
     $text = $_GET['textfield'];
+    $user = $_GET['userName'];
+    $rating = $_GET['rating'];
 
-	$query = "INSERT INTO comments (movieID, text) VALUES ('$newID','$text')";
+	$query = "INSERT INTO comments (movieID, text, userName, rating) VALUES ('$newID','$text', '$user', '$rating')";
     // send to database
     $result = mysqli_query($dbconnection, $query) or die ('query failed');
     // end connection
     mysqli_close($dbconnection);
-    echo 'Message is inserted. <a href="viewComments.php?id='.$newID.'">View Comments</a>';
+    echo 'Message is inserted. <a href="getInfo.php?id='.$newID.'">View Comments</a>';
     exit();
 }
 ?>
@@ -48,9 +50,14 @@ include_once('navBar.php');
                 <form action="submitComment.php" method="GET" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="textfieldInput">Message</label>
-                            <input type="textbox" name="textfield" class="form-control" id="textfieldInput" placeholder="Message">
+                            <input type="textbox" name="textfield" class="form-control" id="textfieldInput" placeholder="Message" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="textfieldInput">Rating (1-5)</label>
+                            <input type="textbox" name="rating" class="form-control" id="rating" placeholder="Message" required>
                         </div>
                         <input type="hidden" name="movieID" value="<?php echo $movieID; ?>">
+                        <input type="hidden" name="userName" value="<?php echo $_COOKIE['username']; ?>">
                         <button type="submit" value="submit" name="submit" class="btn btn-primary">Submit</button>
                     </form>
                             </div>
