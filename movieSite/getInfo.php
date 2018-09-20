@@ -62,8 +62,16 @@ while($row = mysqli_fetch_array($result)) {
                     $result = mysqli_query($dbconnection, $query) or die ('query failed');
                     echo '<ul>';
                     while($found = mysqli_fetch_array($result)) {
-
-                        echo'<li>User: '.$found['userName'].' - Rating: '. $found['rating'].' - Comment: '.$found['text'].'</li>';
+                        echo '<h2>';
+                        echo $found['userName'];
+                        echo '</h2>';
+                        echo '<h4>Rating: ';
+                        echo $found['rating'];
+                        echo '</h4>';
+                        echo '<p>';
+                        echo $found['text'];
+                        echo '</p>';
+                        echo '<hr>';
 
                     }
                     echo '</ul>';
