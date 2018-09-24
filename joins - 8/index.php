@@ -9,7 +9,7 @@ if (isset($_GET[id])){
 require_once('variables.php');
 $dbconnection = mysqli_connect(HOST,USER,PASSWORD,DB_NAME) or die ('connection failed');
 
-$query = "SELECT * FROM guy INNER JOIN race ON (guy.race = race.id) $queryaddition";
+$query = "SELECT * FROM guy INNER JOIN race ON (guy.race = race.raceid) $queryaddition";
 $result = mysqli_query($dbconnection, $query) or die ('query failed');
 
 
@@ -55,7 +55,7 @@ include_once('navBar.php');
 				
 					$theid = $row['id'];
 					echo '<ul>';
-					$newQuery = "SELECT * FROM raids INNER JOIN guy ON (raids.user = guy.id)";
+					$newQuery = "SELECT * FROM raids INNER JOIN guy ON (raids.user = guy.id) WHERE id=$theid";
 					$newResult = mysqli_query($dbconnection, $newQuery) or die ('query failed');
 					while($row2 = mysqli_fetch_array($newResult)) {
 						echo '<li>'.$row2['com'].'</li>';

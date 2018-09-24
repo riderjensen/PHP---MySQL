@@ -82,7 +82,7 @@ include_once('navBar.php');
                         <select class="form-control" id="raceSelect" name="race">
 						<?php
 						while($row = mysqli_fetch_array($resultRace)){
-							echo '<option value='.$row['id'].'>'.$row['race'].'</option>';
+							echo '<option value="'.$row['raceid'].'">'.$row['raceType'].'</option>';
 						};
 						?>
                         </select>

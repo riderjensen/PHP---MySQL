@@ -34,7 +34,7 @@ include_once('navBar.php');
 				<ul class="list-group">
 				<?php 
 				while($row = mysqli_fetch_array($result)) {
-					echo '<li class="list-group-item list-group-item-action"><a href="index.php?id='.$row['id'].'">'.$row['raceType'].'</a></li>';
+					echo '<li class="list-group-item list-group-item-action"><a href="index.php?id='.$row['raceid'].'">'.$row['raceType'].'</a></li>';
 				}
 				mysqli_close($dbconnection);
 				?>
