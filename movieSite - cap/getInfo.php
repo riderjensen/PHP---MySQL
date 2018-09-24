@@ -34,13 +34,17 @@ $result = mysqli_query($dbconnection, $query) or die ('query failed');
 while($row = mysqli_fetch_array($result)) {
     echo '<br><br><br>';
     echo '<img src="posters/'.$row['photo'].'"/>';
-    echo '<p>';
-    echo $row['title'] .' --- '. $row['rating'];
-    echo '</p>';
+    echo '<h3>';
+    echo $row['title'];
+    echo '</h3>';
+    echo '<h5>';
+    echo 'Rating: '. $row['rating'];
+    echo '</h5>';
     echo '<p>';
     echo $row['description'];
     echo '</p>';
     echo '<a class="btn btn-primary" href="submitComment.php?id='.$row['id'].'">Submit a Comment</a>';
+    echo '<br><br><br>';
 }
 
 
