@@ -10,38 +10,39 @@
 crossorigin="anonymous">
 </head>
 <body>
-
 <?php
 include_once('navBar.php');
 ?>
-    
 
 
 <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-
+                <h1>Directory</h1>
 <?php
-
 require_once('variables.php');
 $dbconnection = mysqli_connect(HOST,USER,PASSWORD,DB_NAME) or die ('connection failed');
-// build query
-$query = "SELECT * FROM blog WHERE approved=1";
+$query = "SELECT * FROM special";
 
 // send to database
 $result = mysqli_query($dbconnection, $query) or die ('query failed');
 
-while($found = mysqli_fetch_array($result)) {
-
-    echo'<h3>'.$found['name'].'</h3>';
-    echo '<h4>';
-    echo $found['topic'];
-    echo '</h4>';
+while($row = mysqli_fetch_array($result)) {
+	echo '<div class="card">';
+	echo '<div class="card-body">';
+	echo '<img style="width: 100px;" src="employees/'.$row['pic'].'"></img>';
     echo '<p>';
-    echo $found['comment'].'<br>'.$found['date'];
+    echo $row['name'] .', '. $row['expertise'] .' - '. $row['phone'].' - <a href="email.php?email='. $row['email'] .'">'. $row['email'] .'</a>';
     echo '</p>';
+    echo '<p>';
+    echo $row['bio'];
+	echo '</p>';
+	echo '</div>';
+	echo '</div>';
+	echo '<br>';
 }
+
 // close collection
 mysqli_close($dbconnection);
 

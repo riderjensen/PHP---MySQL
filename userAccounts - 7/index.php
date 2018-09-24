@@ -21,6 +21,8 @@ include_once('navBar.php');
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<h1>Index</h1>
+				<p><a href="account.php" class="btn btn-primary">View account</a></p>
+				<p><a href="submit.php" class="btn btn-primary">Send an email</a></p>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

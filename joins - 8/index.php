@@ -45,8 +45,10 @@ include_once('navBar.php');
 					echo '<p>No results were found.</p>';
 				}
 				while($row = mysqli_fetch_array($result)) {
-					echo '<h3>'.$row['name'].'</h3>';
-					echo ($row['level'] < 50 ? '<h4>Level '.$row['level'].' noob!</h4>' : '<h4>Level '.$row['level'].' hero!</h4>');
+					echo '<div class="card">';
+					echo '<div class="card-body">';
+					echo '<h4>Name: '.$row['name'].'</h4>';
+					echo ($row['level'] < 50 ? '<h6>Level '.$row['level'].' noob!</h6>' : '<h4>Level '.$row['level'].' hero!</h4>');
 					echo ($row['gender'] == 1 ? '<p>Gender: Male.</p>' : '<p>Gender: Female.</p>');
 					echo '<p>'.$row['race'].'</p>';
 					echo ($row['gender'] == 1 ? '<p>Possible raids he has completed:</p>' : '<p>Possible raids she has completed:</p>');
@@ -59,6 +61,9 @@ include_once('navBar.php');
 						echo '<li>'.$row2['com'].'</li>';
 					}
 					echo '</ul>';
+					echo '</div>';
+					echo '</div>';
+					echo '<br>';
 				}
 				// close collection
 				mysqli_close($dbconnection);	
