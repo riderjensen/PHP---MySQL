@@ -10,10 +10,15 @@ $dbconnection = mysqli_connect(HOST,USER,PASSWORD,DB_NAME) or die ('connection f
 //after posting
 if (isset($_GET['submit'])){
 
-    $newID = $_GET['movieID'];
-    $text = $_GET['textfield'];
-    $user = $_GET['userName'];
-    $rating = $_GET['rating'];
+	$newID = mysqli_real_escape_string($dbconnection, trim($_GET['movieID']));
+	$text = mysqli_real_escape_string($dbconnection, trim($_GET['textfield']));
+	$user = mysqli_real_escape_string($dbconnection, trim($_GET['userName']));
+	$rating = mysqli_real_escape_string($dbconnection, trim($_GET['rating']));
+
+    // $newID = $_GET['movieID'];
+    // $text = $_GET['textfield'];
+    // $user = $_GET['userName'];
+    // $rating = $_GET['rating'];
 
 	$query = "INSERT INTO comments (movieID, text, userName, rating) VALUES ('$newID','$text', '$user', '$rating')";
     // send to database
