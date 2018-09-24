@@ -78,24 +78,27 @@ include_once('navBar.php');
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<h1>Index</h1>
+				<h1>What are we angry about??</h1>
 				<?php
 
 				if(mysqli_num_rows($result) == 0) {
 					echo '<p>No results were found.</p>';
 				}
 				while($row = mysqli_fetch_array($result)) {
-					echo '<h4>'.$row['first'].' '.$row['last'].'</h4>';
-					// echo ($row['level'] < 50 ? '<h4>Level '.$row['level'].' noob!</h4>' : '<h4>Level '.$row['level'].' hero!</h4>');
-					// echo ($row['gender'] == 1 ? '<p>Gender: Male.</p>' : '<p>Gender: Female.</p>');
+					echo '<div class="card">';
+					echo '<div class="card-body">';
+					echo '<h6>'.$row['first'].' '.$row['last'].'</h6>';
 					$day = substr($row['submission'], 8, 2);
 					$month = substr($row['submission'], 5, 2);
 
 					$monthDay = convertMonth($month); //function call
 
 					echo '<small>Posted: '.$day.' '.$monthDay.'</small>';
-					echo '<p>Angry about:</p>';
+					echo '<hr>';
 					echo '<p>'.$row['why'].'</p>';
+					echo '</div>';
+					echo '</div>';
+					echo '<br>';
 				}
 				// close collection
 				mysqli_close($dbconnection);	
